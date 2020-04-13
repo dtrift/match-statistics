@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_155019) do
+ActiveRecord::Schema.define(version: 2020_04_13_175852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "host_id"
+    t.bigint "guest_id"
+    t.datetime "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_matches_on_guest_id"
+    t.index ["host_id"], name: "index_matches_on_host_id"
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "first_name", null: false
@@ -30,7 +40,12 @@ ActiveRecord::Schema.define(version: 2020_04_13_155019) do
     t.string "city", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_teams_on_match_id"
   end
 
+  add_foreign_key "matches", "teams", column: "guest_id"
+  add_foreign_key "matches", "teams", column: "host_id"
   add_foreign_key "players", "teams"
+  add_foreign_key "teams", "matches"
 end

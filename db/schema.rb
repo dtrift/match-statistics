@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_175852) do
+ActiveRecord::Schema.define(version: 2020_04_14_035616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "match_statistics", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "match_id"
+    t.decimal "distance_covered", default: "0.0", null: false
+    t.decimal "productivity", default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_match_statistics_on_match_id"
+    t.index ["player_id"], name: "index_match_statistics_on_player_id"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.bigint "host_id"
@@ -44,8 +55,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_175852) do
     t.index ["match_id"], name: "index_teams_on_match_id"
   end
 
-  add_foreign_key "matches", "teams", column: "guest_id"
-  add_foreign_key "matches", "teams", column: "host_id"
+  add_foreign_key "match_statistics", "matches"
+  add_foreign_key "match_statistics", "players"
   add_foreign_key "players", "teams"
   add_foreign_key "teams", "matches"
 end

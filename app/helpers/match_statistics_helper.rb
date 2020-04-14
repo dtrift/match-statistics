@@ -1,4 +1,4 @@
 module MatchStatisticsHelper
-  DISTANCE = 12.freeze
-  PRODUCTIVITY = 85.freeze
+  SUCCESS_DISTANCE = 12.freeze
+  SUCCESS_PRODUCTIVITY = 85.freeze
 end

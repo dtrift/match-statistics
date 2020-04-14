@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Match, type: :model do
   describe 'associations' do
-    it { should have_many :teams }
+    it { should belong_to :host }
+    it { should belong_to :guest }
   end
 
   describe 'validations' do

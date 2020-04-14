@@ -51,12 +51,9 @@ ActiveRecord::Schema.define(version: 2020_04_14_035616) do
     t.string "city", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "match_id"
-    t.index ["match_id"], name: "index_teams_on_match_id"
   end
 
   add_foreign_key "match_statistics", "matches"
   add_foreign_key "match_statistics", "players"
   add_foreign_key "players", "teams"
-  add_foreign_key "teams", "matches"
 end

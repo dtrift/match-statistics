@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_035616) do
   create_table "match_statistics", force: :cascade do |t|
     t.bigint "player_id"
     t.bigint "match_id"
-    t.decimal "distance_covered", default: "0.0", null: false
-    t.decimal "productivity", default: "0.0", null: false
+    t.float "distance_covered", default: 0.0, null: false
+    t.float "productivity", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["match_id"], name: "index_match_statistics_on_match_id"

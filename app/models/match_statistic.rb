@@ -3,10 +3,10 @@ class MatchStatistic < ApplicationRecord
   has_many :matches
 
   def distance_completed?
-    player.distance > DISTANCE
+    distance_covered > MatchStatisticsHelper::DISTANCE
   end
 
   def productivity_completed?
-    player.productivity > PRODUCTIVITY
+    productivity > MatchStatisticsHelper::PRODUCTIVITY
   end
 end

@@ -5,16 +5,20 @@ span.card.border.border-light
     table.table
       tr
         th.col-md-2.text-center Player
+        th.col-md-2.text-center Team
         th.col-md-2.text-center Match Date
-        th.col-md-2.text-center Distance covered
-        th.col-md-2.text-center Productivity
+        th.col-md-2.text-center Distance covered, km
+        th.col-md-2.text-center Productivity, %
 
         - @match_statistics.each do |stat|
           tr
             td.col-md-2.text-center
-              = stat.player.first_name
-              '
-              = stat.player.last_name
+              b = stat.player.first_name
+              '  
+              b = stat.player.last_name
+
+            td.col-md-2.text-center
+              = stat.player.team.title
 
             td.col-md-2.text-center
               = stat.match.date.to_s(:long)
@@ -23,5 +27,8 @@ span.card.border.border-light
               = stat.distance_covered
 
             td.col-md-2.text-center
-              = stat.productivity
+              - if stat.productivity_completed?                
+                  b.success = stat.productivity
+              - else
+                  b.fail = stat.productivity
 hr

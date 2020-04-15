@@ -1,6 +1,6 @@
 class MatchStatistic < ApplicationRecord
-  has_many :players
-  has_many :matches
+  belongs_to :player
+  belongs_to :match
 
   validates_inclusion_of :productivity, in: 0..100
   validates_inclusion_of :distance_covered, in: 0..25

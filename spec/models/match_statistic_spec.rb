@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe MatchStatistic, type: :model do
   describe 'associations' do
-    it { should have_many :players }
-    it { should have_many :matches }
+    it { should belong_to :player }
+    it { should belong_to :match }
   end
 
   describe 'validations' do
@@ -17,8 +17,8 @@ RSpec.describe MatchStatistic, type: :model do
 
   let(:match_statistic) {
     create :match_statistic,
-    player_id: player,
-    match_id: some_match,
+    player: player,
+    match: some_match,
     distance_covered: 15,
     productivity: 95
   }

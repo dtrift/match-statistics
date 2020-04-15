@@ -1,0 +1,27 @@
+span.card.border.border-light
+  .card-header.text-center
+    h3 Match statistics
+  .card-body
+    table.table
+      tr
+        th.col-md-2.text-center Player
+        th.col-md-2.text-center Match Date
+        th.col-md-2.text-center Distance covered
+        th.col-md-2.text-center Productivity
+
+        - @match_statistics.each do |stat|
+          tr
+            td.col-md-2.text-center
+              = stat.player.first_name
+              '
+              = stat.player.last_name
+
+            td.col-md-2.text-center
+              = stat.match.date.to_s(:long)
+              
+            td.col-md-2.text-center
+              = stat.distance_covered
+
+            td.col-md-2.text-center
+              = stat.productivity
+hr

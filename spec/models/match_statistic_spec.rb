@@ -13,7 +13,7 @@ RSpec.describe MatchStatistic, type: :model do
 
   let(:teams) { create_list :team, 2 }
   let(:player) { create :player, team: teams.first }
-  let(:some_match) { create :match, host: teams.first, guest: teams.last }
+  let(:some_match) { create :match, city: 'MSK' }
 
   let(:match_statistic) {
     create :match_statistic,

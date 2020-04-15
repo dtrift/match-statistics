@@ -11,17 +11,7 @@ RSpec.describe MatchStatistic, type: :model do
     it { should validate_inclusion_of(:distance_covered).in_range(0..25) }
   end
 
-  # let(:teams) { create_list :team, 2 }
-  # let(:player) { create :player, team: teams.first }
-  # let(:some_match) { create :match, city: 'MSK' }
-
-  let(:match_statistic) {
-    create :match_statistic
-    # player: player,
-    # match: some_match,
-    # distance_covered: 15,
-    # productivity: 95
-  }
+  let(:match_statistic) { create :match_statistic }
 
   describe '#distance_completed?' do
     it 'distance covered is success' do

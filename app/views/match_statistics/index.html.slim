@@ -24,11 +24,14 @@ span.card.border.border-light
               = stat.match.date.to_s(:long)
               
             td.col-md-2.text-center
-              = stat.distance_covered
+              - if stat.distance_completed?
+                .success = stat.distance_covered
+              - else
+                .fail = stat.distance_covered
 
             td.col-md-2.text-center
               - if stat.productivity_completed?                
-                  b.success = stat.productivity
+                .success = stat.productivity
               - else
-                  b.fail = stat.productivity
+                .fail = stat.productivity
 hr

@@ -12,13 +12,12 @@ RSpec.describe MatchStatistic, type: :model do
   end
 
   let(:teams) { create_list :team, 2 }
-  let(:player1) { create :player, team: teams.first }
-  let(:player2) { create :player, team: teams.last }
+  let(:player) { create :player, team: teams.first }
   let(:some_match) { create :match, host: teams.first, guest: teams.last }
 
   let(:match_statistic) {
     create :match_statistic,
-    player_id: player1,
+    player_id: player,
     match_id: some_match,
     distance_covered: 15,
     productivity: 95

@@ -12,4 +12,8 @@ class MatchStatistic < ApplicationRecord
   def productivity_completed?
     productivity > MatchStatisticsHelper::SUCCESS_PRODUCTIVITY
   end
+
+  def check_index_for_player(player, index)
+    
+  end
 end

@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2020_04_14_035616) do
+ActiveRecord::Schema.define(version: 2020_04_14_152042) do
   enable_extension "plpgsql"
 
   create_table "match_statistics", force: :cascade do |t|
@@ -13,13 +13,17 @@ ActiveRecord::Schema.define(version: 2020_04_14_035616) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.bigint "host_id"
-    t.bigint "guest_id"
+    t.string "city", null: false
     t.datetime "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["guest_id"], name: "index_matches_on_guest_id"
-    t.index ["host_id"], name: "index_matches_on_host_id"
+  end
+
+  create_table "matches_teams", force: :cascade do |t|
+    t.bigint "match_id"
+    t.bigint "team_id"
+    t.index ["match_id"], name: "index_matches_teams_on_match_id"
+    t.index ["team_id"], name: "index_matches_teams_on_team_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -41,5 +45,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_035616) do
 
   add_foreign_key "match_statistics", "matches"
   add_foreign_key "match_statistics", "players"
+  add_foreign_key "matches_teams", "matches"
+  add_foreign_key "matches_teams", "teams"
   add_foreign_key "players", "teams"
 end

@@ -1,6 +1,6 @@
 class Match < ApplicationRecord
-  belongs_to :host, class_name: 'Team'
-  belongs_to :guest, class_name: 'Team'
+  has_many :matches_teams, dependent: :nullify
+  has_many :teams, through: :matches_teams
 
-  validates :date, presence: true
+  validates :city, :date, presence: true
 end

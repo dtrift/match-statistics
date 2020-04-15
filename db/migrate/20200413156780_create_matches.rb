@@ -1,8 +1,7 @@
 class CreateMatches < ActiveRecord::Migration[5.2]
   def change
     create_table :matches do |t|
-      t.references :host
-      t.references :guest
+      t.string :city, null: false
       t.datetime :date, null: false
 
       t.timestamps

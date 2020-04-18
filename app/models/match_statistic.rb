@@ -14,11 +14,18 @@ class MatchStatistic < ApplicationRecord
 
   scope :top_five, -> { order(productivity: :desc).first(5) }
 
+  before_save :set_stat!
+
   def distance_completed?
     distance_covered > MatchStatisticsHelper::SUCCESS_DISTANCE
   end
 
   def productivity_completed?
     productivity > MatchStatisticsHelper::SUCCESS_PRODUCTIVITY
+  end
+
+  def set_stat!
+    self.productivity_success = productivity_completed?
+    self.distance_success = distance_completed?
   end
 end

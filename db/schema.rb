@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_062111) do
+ActiveRecord::Schema.define(version: 2020_04_18_073939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_04_18_062111) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
+    t.boolean "productivity_success", default: false
+    t.boolean "distance_success", default: false
     t.index ["match_id"], name: "index_match_statistics_on_match_id"
     t.index ["player_id"], name: "index_match_statistics_on_player_id"
     t.index ["team_id"], name: "index_match_statistics_on_team_id"

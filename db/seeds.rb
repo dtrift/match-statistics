@@ -19,24 +19,24 @@ matches = Match.create!([
 ])
 
 match_statistics = MatchStatistic.create!([
-  { player_id: players[0].id, match_id: matches[0].id, distance_covered: 11.5, productivity: 83 },
-  { player_id: players[1].id, match_id: matches[0].id, distance_covered: 12.1, productivity: 87 },
-  { player_id: players[2].id, match_id: matches[0].id, distance_covered: 13.5, productivity: 86 },
-  { player_id: players[3].id, match_id: matches[0].id, distance_covered: 10.5, productivity: 82 },
-  { player_id: players[4].id, match_id: matches[0].id, distance_covered: 11.5, productivity: 84 },
-  { player_id: players[5].id, match_id: matches[0].id, distance_covered: 15.5, productivity: 90 },
-  { player_id: players[0].id, match_id: matches[1].id, distance_covered: 15.3, productivity: 89 },
-  { player_id: players[1].id, match_id: matches[1].id, distance_covered: 14.2, productivity: 87 },
-  { player_id: players[2].id, match_id: matches[1].id, distance_covered: 11.1, productivity: 80 },
-  { player_id: players[3].id, match_id: matches[1].id, distance_covered: 13.9, productivity: 86 },
-  { player_id: players[4].id, match_id: matches[1].id, distance_covered: 10.5, productivity: 67 },
-  { player_id: players[5].id, match_id: matches[1].id, distance_covered: 20.1, productivity: 99 },
-  { player_id: players[0].id, match_id: matches[2].id, distance_covered: 14.1, productivity: 89 },
-  { player_id: players[1].id, match_id: matches[2].id, distance_covered: 13.5, productivity: 87 },
-  { player_id: players[2].id, match_id: matches[2].id, distance_covered: 12.2, productivity: 80 },
-  { player_id: players[3].id, match_id: matches[2].id, distance_covered: 11.4, productivity: 86 },
-  { player_id: players[4].id, match_id: matches[2].id, distance_covered: 11.6, productivity: 67 },
-  { player_id: players[5].id, match_id: matches[2].id, distance_covered: 17.9, productivity: 92 }
+  { player_id: players[0].id, match_id: matches[0].id, distance_covered: 11.5, productivity: 83, team_id: teams[0].id },
+  { player_id: players[1].id, match_id: matches[0].id, distance_covered: 12.1, productivity: 87, team_id: teams[0].id },
+  { player_id: players[2].id, match_id: matches[0].id, distance_covered: 13.5, productivity: 86, team_id: teams[0].id },
+  { player_id: players[3].id, match_id: matches[0].id, distance_covered: 10.5, productivity: 82, team_id: teams[1].id },
+  { player_id: players[4].id, match_id: matches[0].id, distance_covered: 11.5, productivity: 84, team_id: teams[1].id },
+  { player_id: players[5].id, match_id: matches[0].id, distance_covered: 15.5, productivity: 90, team_id: teams[1].id },
+  { player_id: players[0].id, match_id: matches[1].id, distance_covered: 15.3, productivity: 89, team_id: teams[0].id },
+  { player_id: players[1].id, match_id: matches[1].id, distance_covered: 14.2, productivity: 87, team_id: teams[0].id },
+  { player_id: players[2].id, match_id: matches[1].id, distance_covered: 11.1, productivity: 80, team_id: teams[0].id },
+  { player_id: players[3].id, match_id: matches[1].id, distance_covered: 13.9, productivity: 86, team_id: teams[1].id },
+  { player_id: players[4].id, match_id: matches[1].id, distance_covered: 10.5, productivity: 67, team_id: teams[1].id },
+  { player_id: players[5].id, match_id: matches[1].id, distance_covered: 20.1, productivity: 99, team_id: teams[1].id },
+  { player_id: players[0].id, match_id: matches[2].id, distance_covered: 14.1, productivity: 89, team_id: teams[0].id },
+  { player_id: players[1].id, match_id: matches[2].id, distance_covered: 13.5, productivity: 87, team_id: teams[0].id },
+  { player_id: players[2].id, match_id: matches[2].id, distance_covered: 12.2, productivity: 80, team_id: teams[0].id },
+  { player_id: players[3].id, match_id: matches[2].id, distance_covered: 11.4, productivity: 86, team_id: teams[1].id },
+  { player_id: players[4].id, match_id: matches[2].id, distance_covered: 11.6, productivity: 67, team_id: teams[1].id },
+  { player_id: players[5].id, match_id: matches[2].id, distance_covered: 17.9, productivity: 92, team_id: teams[1].id }
 ])
 
 matches_teams = MatchesTeam.create!([

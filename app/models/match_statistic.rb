@@ -1,13 +1,16 @@
 class MatchStatistic < ApplicationRecord
   belongs_to :player
   belongs_to :match
+  belongs_to :team
 
   validates_inclusion_of :productivity, in: 0..100
   validates_inclusion_of :distance_covered, in: 0..25
 
-  scope :top_five_for, ->(team) { where('team_id = ?', team)
-                                  .order(productivity: :desc)
-                                  .first(5) }
+  scope :top_five_for, ->(team) {
+    joins(:team).where(teams: { id: team})
+      .order(productivity: :desc)
+      .first(5)
+    }
 
   scope :top_five, -> { order(productivity: :desc).first(5) }
 

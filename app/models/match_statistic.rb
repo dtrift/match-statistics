@@ -24,6 +24,8 @@ class MatchStatistic < ApplicationRecord
     productivity > MatchStatisticsHelper::SUCCESS_PRODUCTIVITY
   end
 
+  private
+
   def set_stat!
     self.productivity_success = productivity_completed?
     self.distance_success = distance_completed?

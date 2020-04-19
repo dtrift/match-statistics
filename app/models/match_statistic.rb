@@ -14,7 +14,17 @@ class MatchStatistic < ApplicationRecord
 
   scope :top_five, -> { order(productivity: :desc).first(5) }
 
+  scope :last_matches_for, ->(player) {
+    where(player_id: player, productivity_success: true).last(5)
+  }
+
   before_save :set_stat!
+
+  private
+  
+  def self.productivity_completed_for?(player)
+    last_matches_for(player).count > 0
+  end
 
   def distance_completed?
     distance_covered > MatchStatisticsHelper::SUCCESS_DISTANCE
@@ -23,8 +33,6 @@ class MatchStatistic < ApplicationRecord
   def productivity_completed?
     productivity > MatchStatisticsHelper::SUCCESS_PRODUCTIVITY
   end
-
-  private
 
   def set_stat!
     self.productivity_success = productivity_completed?

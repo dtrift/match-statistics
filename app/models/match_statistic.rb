@@ -18,8 +18,6 @@ class MatchStatistic < ApplicationRecord
 
   before_save :set_stat!
 
-  private
-
   def self.productivity_completed_for?(player)
     last_matches_for(player).count > 0
   end
@@ -31,6 +29,8 @@ class MatchStatistic < ApplicationRecord
   def productivity_completed?
     productivity > MatchStatisticsHelper::SUCCESS_PRODUCTIVITY
   end
+
+  private
 
   def set_stat!
     self.productivity_success = productivity_completed?
